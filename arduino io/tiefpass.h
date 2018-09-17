@@ -15,11 +15,11 @@
 
 class iirlowpass{
 	public:
-		int16_t sample(int16_t input);
+		int16_t sample(int16_t input)  volatile;
 		iirlowpass();
 		~iirlowpass();
 	private:
-		 int16_t FIRCoef[Ntap];
+		 volatile int16_t FIRCoef[Ntap];
 		 int16_t* x;
 
 };

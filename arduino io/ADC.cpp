@@ -28,7 +28,8 @@ AnalogDigitalConverter::AnalogDigitalConverter(){
 	DIDR0=255;
 	DIDR2=255;
 }
-void AnalogDigitalConverter::sample(){
+void AnalogDigitalConverter::sample() volatile
+{
 	int16_t temp=0;
 	switch(this->actual_measure_channel){
 		case 0:{
@@ -130,7 +131,8 @@ void AnalogDigitalConverter::sample(){
 		actual_measure_channel=0;
 	}
 }
-int16_t AnalogDigitalConverter::getoutput(uint8_t channel){
+int16_t AnalogDigitalConverter::getoutput(uint8_t channel) volatile
+{
 	if (channel>15){
 		return 0xFFFF;
 	}else{
@@ -138,7 +140,8 @@ int16_t AnalogDigitalConverter::getoutput(uint8_t channel){
 	}
 
 }
-int16_t AnalogDigitalConverter::ConvertPT1000ADCvalToTemperature(int16_t ADCval){
+int16_t AnalogDigitalConverter::ConvertPT1000ADCvalToTemperature(int16_t ADCval) volatile
+{
 	if(ADCval < _pt1000Start){
 		ADCval=_pt1000Start;
 	}
@@ -149,7 +152,8 @@ int16_t AnalogDigitalConverter::ConvertPT1000ADCvalToTemperature(int16_t ADCval)
 	
 	return (int16_t)pgm_read_word(&_pt1000[offset]);
 }
-int16_t AnalogDigitalConverter::ConvertPT2000ADCvalToTemperature(int16_t ADCval){
+int16_t AnalogDigitalConverter::ConvertPT2000ADCvalToTemperature(int16_t ADCval) volatile
+{
 	if(ADCval < _pt2000Start){
 		ADCval=_pt2000Start;
 	}
@@ -160,7 +164,8 @@ int16_t AnalogDigitalConverter::ConvertPT2000ADCvalToTemperature(int16_t ADCval)
 	
 	return (int16_t)pgm_read_word(&_pt2000[offset]);
 }
-uint8_t AnalogDigitalConverter::getconfig(uint8_t channel){
+uint8_t AnalogDigitalConverter::getconfig(uint8_t channel) volatile
+{
 	if(channel > 15 || channel < 0){
 		return 0;
 	}
@@ -174,7 +179,8 @@ uint8_t AnalogDigitalConverter::getconfig(uint8_t channel){
 	config|=((uint8_t)(m_sensortype[channel]) << 2);
 	return config;
 }
-bool AnalogDigitalConverter::setconfig(uint8_t channel, uint8_t config){
+bool AnalogDigitalConverter::setconfig(uint8_t channel, uint8_t config) volatile
+{
 	if(channel > 15 || channel < 0){
 		return true;
 	}

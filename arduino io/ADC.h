@@ -61,21 +61,21 @@ const int16_t _pt1000size = 431;
 class AnalogDigitalConverter{
 	public:
 		AnalogDigitalConverter();
-		void sample();
-		int16_t getoutput(uint8_t channel);
-		uint8_t getconfig(uint8_t channel);
-		bool setconfig(uint8_t channel, uint8_t config);
-		int16_t ConvertPT1000ADCvalToTemperature(int16_t ADCval);
-		int16_t ConvertPT2000ADCvalToTemperature(int16_t ADCval);
+		void sample() volatile;
+		int16_t getoutput(uint8_t channel) volatile;
+		uint8_t getconfig(uint8_t channel) volatile;
+		bool setconfig(uint8_t channel, uint8_t config) volatile;
+		int16_t ConvertPT1000ADCvalToTemperature(int16_t ADCval) volatile;
+		int16_t ConvertPT2000ADCvalToTemperature(int16_t ADCval) volatile;
 	private:
-		iirlowpass tp[16];
+		volatile iirlowpass tp[16];
 		
 
-		sensortype m_sensortype[16];// = {pt2000,pt2000,pt2000,pt2000,pt2000,pt2000,pt2000,pt2000,pt2000,pt2000,pt2000,pt2000,pt2000,pt2000,pt2000,pt2000};
-		bool sensor_en[16];// = {true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true};
-		bool tp_en[16];// = {true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true};
-		uint8_t actual_measure_channel;
-		int16_t outputvalue[16];
+		volatile sensortype m_sensortype[16];// = {pt2000,pt2000,pt2000,pt2000,pt2000,pt2000,pt2000,pt2000,pt2000,pt2000,pt2000,pt2000,pt2000,pt2000,pt2000,pt2000};
+		volatile bool sensor_en[16];// = {true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true};
+		volatile bool tp_en[16];// = {true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true};
+		volatile uint8_t actual_measure_channel;
+		volatile int16_t outputvalue[16];
 
 };
 

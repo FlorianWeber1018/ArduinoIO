@@ -15,7 +15,7 @@
 extern volatile uint8_t  InBufferUart0[256];
 extern volatile uint8_t InBufferUart0pointer;
 
-AnalogDigitalConverter myADC;
+volatile AnalogDigitalConverter myADC;
 volatile cmdParser myParser;
 io_pin* io[40];
 
@@ -24,15 +24,12 @@ io_pin* io[40];
 int main(void)
 {
 DDRB |= 0x80;//LED
-	init_ADC();
 	init_io();
 	init_pwmTimer();
 	init_UART0();
 	init_UART1();
 	
-	//serial_out1('\n');
-	//serial_out1(13);
-	//serial_out1('r');
+
 	test();
 
 	sei();
@@ -46,19 +43,41 @@ void test(){
 	testflush(0);
 	testflush(0);
 	testflush(eot);
-	*/
-	for ( uint8_t command = getCI0; command <= getCI39; command++ ){
+	
+	for ( uint8_t command = setCA0; command <= setCA15; command++ ){
 		testflush(command);
+		testflush(0x04);
+		testflush(0x00);
 		testflush(eot);
+
 	}
+	for ( uint8_t command = setCI0; command <= setCI39; command++ ){
+	testflush(command);
+	testflush(0x04);
+	testflush(0x00);
+	testflush(eot);
+
+	}
+	
+	testflush(setVI0+16);
+	testflush(0x0F);
+	testflush(0x07);
+	testflush(eot);
+	
+	testflush(setCI0+16);
+	testflush(0x04);
+	testflush(0x00);
+	testflush(eot);
+	*/
+	
+	
 }
 void testflush(uint8_t testChar){
-	InBufferUart0[InBufferUart0pointer] = testChar;
-	if(InBufferUart0[InBufferUart0pointer]==eot){
-		InBufferUart0pointer++;
+	uint8_t tempRec = testChar;
+	InBufferUart0[InBufferUart0pointer] = tempRec;
+	InBufferUart0pointer++;
+	if(tempRec == eot){
 		myParser.inc_parser_cnt();
-	}else{
-		InBufferUart0pointer++;
 	}
 }
 void init_io(){
@@ -124,9 +143,7 @@ ISR (TIMER3_COMPA_vect){
 		io[i]->trigger();
 	}
 }
-void init_ADC(){
-	
-}
+
 ISR (ADC_vect){
 	myADC.sample();
 }

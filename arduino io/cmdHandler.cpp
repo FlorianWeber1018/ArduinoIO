@@ -9,58 +9,52 @@
  #include "uart.h"
  #include "cmdParser.h"
  #include "io.h"
- void cmdHandler__freeMem()
+ void cmdHandler_freeMem()
  {
-	serial_out0(cmdfreeRam);
-
-	uint8_t numberStr[4];
-	plotNumber( freeRam(), numberStr);
-	serial_out0(numberStr, 4);
-	serial_out0(eot);
+	 uint8_t returnStr[6];
+	 returnStr[0] = cmdfreeRam;
+	 plotNumber( freeRam(), returnStr+1);
+	 returnStr[5] = eot;
+	 serial_out0(returnStr, 6);
  }
  void cmdHandler_get_value_io(uint8_t pin)
  {
 	if(pin < 40){
- 		serial_out0(setVI0 + pin);
- 		uint8_t numberStr[2];
-		plotNumber(io[pin]->get(), numberStr);
-		serial_out0(numberStr, 2);
-		serial_out0(eot);
+		uint8_t returnStr[4];
+		returnStr[0] = setVI0 + pin;
+		plotNumber(io[pin]->get(), returnStr+1);
+		returnStr[3] = eot;
+		serial_out0(returnStr, 4);
 	}
  }
 void cmdHandler_get_value_adc(uint8_t pin)
 {
 	if (pin < 16){
-		serial_out0(setVA0 + pin);
-		uint8_t numberStr[4];
-		plotNumber( myADC.getoutput(pin), numberStr);
-		serial_out0(numberStr, 4);
-		serial_out0(eot);
+		uint8_t returnStr[6];
+		returnStr[0] = setVA0 + pin;
+		plotNumber( myADC.getoutput(pin), returnStr+1);
+		returnStr[5] = eot;
+		serial_out0(returnStr, 6);
 	}
 }
 void cmdHandler_get_config_io(uint8_t pin)
 {
-static uint8_t cnt = 0;
 	if(pin < 40){
-		cnt++;
-		serial_out0(setCI0 + pin);
-		uint8_t numberStr[2];
-		//plotNumber(io[pin]->getconfig(), numberStr);
-		plotNumber(3, numberStr);
-		serial_out0(numberStr, 2);
-		serial_out0(eot);
-		//serial_out1('h');
+		uint8_t returnStr[4];
+		returnStr[0] = setCI0 + pin;
+		plotNumber(io[pin]->getconfig(), returnStr+1);
+		returnStr[3] = eot;
+		serial_out0(returnStr, 4);
 	}
-
 }
 void cmdHandler_get_config_adc(uint8_t pin)
 {
 	if (pin < 16){
-		serial_out0(setCA0 + pin);
-		uint8_t numberStr[2];
-		plotNumber( myADC.getconfig(pin), numberStr);
-		serial_out0(numberStr, 2);
-		serial_out0(eot);
+		uint8_t returnStr[4];
+		returnStr[0] = setCA0 + pin;
+		plotNumber( myADC.getconfig(pin), returnStr+1);
+		returnStr[3] = eot;
+		serial_out0(returnStr, 4);
 	}
 }
 void cmdHandler_set_value_io(uint8_t pin, uint8_t value)

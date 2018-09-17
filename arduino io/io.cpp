@@ -19,7 +19,8 @@
  io_pin::~io_pin(){
 
  }
- uint8_t io_pin::get(){
+ uint8_t io_pin::get() volatile
+ {
 	switch(config){
 		case ninvertInput:{
 			if((((*PORT_IN)>>PIN) & 1)==1){
@@ -59,7 +60,8 @@
 	}
 	return 0;
  }
- void io_pin::set(uint8_t value){
+ void io_pin::set(uint8_t value) volatile
+ {
  	switch(config){
 		case ninvertInput:{
 			
@@ -89,7 +91,8 @@
 		}
 	}
  }
- void io_pin::setconfig(uint8_t config){
+ void io_pin::setconfig(uint8_t config) volatile
+ {
 	this->config=(io_config)config;
 
 	switch(config){
@@ -124,11 +127,12 @@
 		}
 	}
  }
- io_config io_pin::getconfig(){
-	 return config;
+ uint8_t io_pin::getconfig() volatile
+ {
+	 return static_cast<uint8_t>(config);
  }
- void io_pin::trigger(){
-	cnt++;
+ void io_pin::trigger() volatile
+ {
 	if(config == ninvertPwmOutput){
 		if(cnt > DutyCycle){
 			*PORT_OUT &= ~(1<<PIN);		//switch off
@@ -142,26 +146,5 @@
 			*PORT_OUT &= ~(1<<PIN);		//switch on
 		}
 	}
-
-
-
-// 	if(config == ninvertPwmOutput){
-// 		cnt++;
-// 		if(cnt < DutyCycle){
-// 			//switch on
-// 			*PORT_OUT |= 1<<PIN;
-// 		}else{
-// 			//switch off
-// 			*PORT_OUT &= ~(1<<PIN);
-// 		}
-// 	}else if(config == invertPwmOutput){
-// 		cnt++;
-// 		if(cnt < DutyCycle){
-// 			//switch on
-// 			*PORT_OUT &= ~(1<<PIN);
-// 		}else{
-// 			//switch off
-// 			*PORT_OUT |= 1<<PIN;
-// 		}
-// 	}
+	cnt++;
  }

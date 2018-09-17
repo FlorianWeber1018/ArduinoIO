@@ -34,18 +34,12 @@ extern volatile cmdParser myParser;
 	 UCSR1C = UCSR1C_std;
 }
 ISR(USART0_RX_vect){
-	cli();
-	InBufferUart0[InBufferUart0pointer] = UDR0;
-	if(InBufferUart0[InBufferUart0pointer] == eot){
-		InBufferUart0pointer++;
+	uint8_t tempRec = UDR0;
+	InBufferUart0[InBufferUart0pointer] = tempRec;
+	InBufferUart0pointer++;
+	if(tempRec == eot){
 		myParser.inc_parser_cnt();
-		//debug::debug0(InBufferUart0pointer);
-		
-		//debug::debug2(myParser.get_parser_cnt());
-	}else{
-		InBufferUart0pointer++;
 	}
-	sei();
 }
 ISR(USART1_RX_vect){
 	 uint8_t temp= UDR1;

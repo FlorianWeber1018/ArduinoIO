@@ -27,19 +27,19 @@ class io_pin{
 public:
 	io_pin(volatile uint8_t* DDR, volatile uint8_t* PORT_OUT, volatile uint8_t* PORT_IN, uint8_t PIN, io_config config);
 	~io_pin();
-	uint8_t get();
-	void set(uint8_t value);
-	void setconfig(uint8_t);
-	io_config getconfig();
-	void trigger();
+	uint8_t get() volatile;
+	void set(uint8_t value) volatile;
+	void setconfig(uint8_t) volatile;
+	uint8_t getconfig() volatile;
+	void trigger() volatile;
 private:
-	io_config config;
+	volatile io_config config;
 	volatile uint8_t* PORT_IN;
 	volatile uint8_t* PORT_OUT;
 	volatile uint8_t* DDR;
-	uint8_t PIN;
-	uint8_t DutyCycle;
-	uint8_t cnt;
+	volatile uint8_t PIN;
+	volatile uint8_t DutyCycle;
+	volatile uint8_t cnt;
 };
 
 

@@ -11,9 +11,11 @@ lock::lock()
 }
 void lock::tryLock() volatile
 {
+	
 	while(locked){
 		asm volatile("nop");
 	}
+	
 	locked = true;
 }
 void lock::unlock() volatile

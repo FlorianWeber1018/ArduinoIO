@@ -20,32 +20,17 @@ cmdParser::cmdParser()
  void cmdParser::checkparser() volatile
  {
 	if(parser_cnt > 0){
-	/*
-		debug::debug0(readCursor);
-		debug::debug1(InBufferUart0pointer);
-		debug::debug2(parser_cnt);	
-		*/
 		parseOne();
-		//serial_out1('d');
-
-		
 	}
 }
 void cmdParser::parseOne() volatile
 {
-	cli();
 	uint8_t cmdByte = InBufferUart0[readCursor];	//readCursor starts with cmd Byte
-	sei();
 	readCursor++;
-		//serial_out1('1');
 	if( cmdByte < setVA0 || cmdByte > cmdfreeRam){		//really cmd byte????
-		serial_out1('e');
-		
+		//serial_out1('e');		
 	}else{
-		cli();
 		uint8_t parsedNumber = parseUint8Number();
-		sei();
-		//serial_out1('2');
 		readCursor++;
 		if( cmdByte <= getCA15 ){							
 			if(cmdByte <= getVA15){
@@ -84,7 +69,7 @@ void cmdParser::parseOne() volatile
 						cmdHandler_get_config_io(cmdByte-getCI0);
 					}else{
 						if(cmdByte == cmdfreeRam){
-							cmdHandler__freeMem();
+							cmdHandler_freeMem();
 						}
 					}	
 				}
@@ -126,8 +111,8 @@ uint8_t cmdParser::parseUint8Number() volatile{
 }
 
 void plotNumber(uint8_t number, unsigned char* result){
-	result[0] = ( number & 0x0F );
-	result[1] = ( number >> 4 ) & 0x0F;
+	result[0] = (unsigned char)( number & 0x0F );
+	result[1] = (unsigned char)( number >> 4 ) & 0x0F;
 }
 void plotNumber(int16_t number, unsigned char* result){
 	result[0] = (unsigned char)( number & 0x000F );

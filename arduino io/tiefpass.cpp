@@ -6,7 +6,8 @@
  */ 
  #include "tiefpass.h"
  #include <stdlib.h>
-int16_t iirlowpass::sample(int16_t NewSample){
+int16_t iirlowpass::sample(int16_t NewSample) volatile
+{
 	 //shift the old samples
 	 int32_t y=0;
 	 for(uint8_t n=Ntap-1; n>0; n--){
@@ -40,5 +41,4 @@ iirlowpass::iirlowpass(){
 };
 iirlowpass::~iirlowpass(){
 	free(x);
-
 }
