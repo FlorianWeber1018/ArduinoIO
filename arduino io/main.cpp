@@ -18,7 +18,7 @@ extern volatile uint8_t InBufferUart0pointer;
 
 volatile AnalogDigitalConverter myADC;
 volatile cmdParser myParser;
-io_pin* io[40];
+volatile io_pin* io[40];
 
 
 
@@ -88,7 +88,7 @@ void testflush(uint8_t testChar){
 	}
 }
 void init_io(){
-	io_config init_config=invertOutput;
+	io_config init_config=ninvertOutput;
 	//__________________________________________________________________________________
 	//pins noch anzupassen
 
@@ -146,7 +146,7 @@ void init_pwmTimer(){
 	TCCR3B	=	(1<<CS32) | (1<<WGM32);	//prescaler:256 ; CTC mode
 }
 ISR (TIMER3_COMPA_vect){
-	for(uint8_t i = 0; i < 39; i++){
+	for(uint8_t i = 0; i < 40; i++){
 		io[i]->trigger();
 	}
 }

@@ -62,7 +62,7 @@
  }
  void io_pin::set(uint8_t value) volatile
  {
- 	switch(config){
+ 	switch(this->config){
 		case ninvertInput:{
 			
 		}break;
@@ -125,9 +125,9 @@
 				*PORT_OUT |= 1<<PIN;
 			}
 		}
-		this->config=(io_config)config;
+		
 	}
-
+	this->config=static_cast<io_config>(config);
 	
  }
  uint8_t io_pin::getconfig() volatile

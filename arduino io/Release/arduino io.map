@@ -404,7 +404,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x1fec
+.text           0x00000000     0x1ff8
  *(.vectors)
  .vectors       0x00000000       0xe4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega2560/avr6/crtatmega2560.o
                 0x00000000                __vector_default
@@ -591,112 +591,112 @@ END GROUP
                 0x0000105c       0x2e cmdParser.o
                 0x0000105c                _Z10plotNumberiPh
  .text._ZN6io_pinC2EPVhS1_S1_h9io_config
-                0x0000108a       0xd8 io.o
+                0x0000108a       0xe0 io.o
                 0x0000108a                _ZN6io_pinC1EPVhS1_S1_h9io_config
                 0x0000108a                _ZN6io_pinC2EPVhS1_S1_h9io_config
  .text._ZNV6io_pin3getEv
-                0x00001162       0x6c io.o
-                0x00001162                _ZNV6io_pin3getEv
+                0x0000116a       0x6c io.o
+                0x0000116a                _ZNV6io_pin3getEv
  .text._ZNV6io_pin3setEh
-                0x000011ce       0x66 io.o
-                0x000011ce                _ZNV6io_pin3setEh
+                0x000011d6       0x66 io.o
+                0x000011d6                _ZNV6io_pin3setEh
  .text._ZNV6io_pin9setconfigEh
-                0x00001234       0xc4 io.o
-                0x00001234                _ZNV6io_pin9setconfigEh
+                0x0000123c       0xc8 io.o
+                0x0000123c                _ZNV6io_pin9setconfigEh
  .text._ZNV6io_pin9getconfigEv
-                0x000012f8        0x6 io.o
-                0x000012f8                _ZNV6io_pin9getconfigEv
+                0x00001304        0x6 io.o
+                0x00001304                _ZNV6io_pin9getconfigEv
  .text._ZNV6io_pin7triggerEv
-                0x000012fe       0x84 io.o
-                0x000012fe                _ZNV6io_pin7triggerEv
+                0x0000130a       0x84 io.o
+                0x0000130a                _ZNV6io_pin7triggerEv
  .text._ZN4lockC2Ev
-                0x00001382        0x6 lock.o
-                0x00001382                _ZN4lockC1Ev
-                0x00001382                _ZN4lockC2Ev
+                0x0000138e        0x6 lock.o
+                0x0000138e                _ZN4lockC1Ev
+                0x0000138e                _ZN4lockC2Ev
  .text._ZNV4lock7tryLockEv
-                0x00001388       0x16 lock.o
-                0x00001388                _ZNV4lock7tryLockEv
+                0x00001394       0x16 lock.o
+                0x00001394                _ZNV4lock7tryLockEv
  .text._ZNV4lock6unlockEv
-                0x0000139e        0x6 lock.o
-                0x0000139e                _ZNV4lock6unlockEv
+                0x000013aa        0x6 lock.o
+                0x000013aa                _ZNV4lock6unlockEv
  .text._Z7init_iov
-                0x000013a4      0x49e main.o
-                0x000013a4                _Z7init_iov
+                0x000013b0      0x49e main.o
+                0x000013b0                _Z7init_iov
  .text.startup.main
-                0x00001842       0x5e main.o
-                0x00001842                main
+                0x0000184e       0x5e main.o
+                0x0000184e                main
  .text.__vector_32
-                0x000018a0       0x66 main.o
-                0x000018a0                __vector_32
+                0x000018ac       0x66 main.o
+                0x000018ac                __vector_32
  .text.__vector_29
-                0x00001906       0x52 main.o
-                0x00001906                __vector_29
+                0x00001912       0x52 main.o
+                0x00001912                __vector_29
  .text._Z7freeRamv
-                0x00001958       0x32 main.o
-                0x00001958                _Z7freeRamv
+                0x00001964       0x32 main.o
+                0x00001964                _Z7freeRamv
  .text.startup._GLOBAL__sub_I_myADC
-                0x0000198a        0xe main.o
+                0x00001996        0xe main.o
  .text.exit._GLOBAL__sub_D_myADC
-                0x00001998       0x1c main.o
- .text._Znwj    0x000019b4        0x2 mem.o
-                0x000019b4                _Znwj
+                0x000019a4       0x1c main.o
+ .text._Znwj    0x000019c0        0x2 mem.o
+                0x000019c0                _Znwj
  .text._ZNV10iirlowpass6sampleEi
-                0x000019b6      0x21a tiefpass.o
-                0x000019b6                _ZNV10iirlowpass6sampleEi
+                0x000019c2      0x21a tiefpass.o
+                0x000019c2                _ZNV10iirlowpass6sampleEi
  .text._ZN10iirlowpassC2Ev
-                0x00001bd0       0x5a tiefpass.o
-                0x00001bd0                _ZN10iirlowpassC2Ev
-                0x00001bd0                _ZN10iirlowpassC1Ev
+                0x00001bdc       0x5a tiefpass.o
+                0x00001bdc                _ZN10iirlowpassC2Ev
+                0x00001bdc                _ZN10iirlowpassC1Ev
  .text._ZN10iirlowpassD2Ev
-                0x00001c2a        0x8 tiefpass.o
-                0x00001c2a                _ZN10iirlowpassD1Ev
-                0x00001c2a                _ZN10iirlowpassD2Ev
+                0x00001c36        0x8 tiefpass.o
+                0x00001c36                _ZN10iirlowpassD1Ev
+                0x00001c36                _ZN10iirlowpassD2Ev
  .text._Z10init_UART0v
-                0x00001c32       0x18 uart.o
-                0x00001c32                _Z10init_UART0v
+                0x00001c3e       0x18 uart.o
+                0x00001c3e                _Z10init_UART0v
  .text._Z10init_UART1v
-                0x00001c4a       0x18 uart.o
-                0x00001c4a                _Z10init_UART1v
+                0x00001c56       0x18 uart.o
+                0x00001c56                _Z10init_UART1v
  .text.__vector_25
-                0x00001c62       0x72 uart.o
-                0x00001c62                __vector_25
+                0x00001c6e       0x72 uart.o
+                0x00001c6e                __vector_25
  .text.__vector_36
-                0x00001cd4       0x1c uart.o
-                0x00001cd4                __vector_36
+                0x00001ce0       0x1c uart.o
+                0x00001ce0                __vector_36
  .text._Z11serial_out0Phh
-                0x00001cf0       0x4c uart.o
-                0x00001cf0                _Z11serial_out0Phh
+                0x00001cfc       0x4c uart.o
+                0x00001cfc                _Z11serial_out0Phh
  .text.startup._GLOBAL__sub_I_InBufferUart0
-                0x00001d3c        0x6 uart.o
- .text.libgcc   0x00001d42       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_tablejump2.o)
-                0x00001d42                __tablejump2__
+                0x00001d48        0x6 uart.o
+ .text.libgcc   0x00001d4e       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_tablejump2.o)
+                0x00001d4e                __tablejump2__
  .text.libgcc.mul
-                0x00001d52        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_mulhisi3.o)
-                0x00001d52                __mulhisi3
+                0x00001d5e        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_mulhisi3.o)
+                0x00001d5e                __mulhisi3
  .text.libgcc.mul
-                0x00001d5e       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_umulhisi3.o)
-                0x00001d5e                __umulhisi3
+                0x00001d6a       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_umulhisi3.o)
+                0x00001d6a                __umulhisi3
  .text.libgcc.mul
-                0x00001d7c        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_usmulhisi3.o)
-                0x00001d7c                __usmulhisi3
-                0x00001d7e                __usmulhisi3_tail
+                0x00001d88        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_usmulhisi3.o)
+                0x00001d88                __usmulhisi3
+                0x00001d8a                __usmulhisi3_tail
  .text.avr-libc
-                0x00001d88      0x242 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(malloc.o)
-                0x00001d88                malloc
-                0x00001eb8                free
-                0x00001fca                . = ALIGN (0x2)
+                0x00001d94      0x242 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(malloc.o)
+                0x00001d94                malloc
+                0x00001ec4                free
+                0x00001fd6                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00001fca        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
-                0x00001fca                _exit
-                0x00001fca                exit
+ .fini9         0x00001fd6        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
+                0x00001fd6                _exit
+                0x00001fd6                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
  *(.fini7)
  *(.fini7)
  *(.fini6)
- .fini6         0x00001fca       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_dtors.o)
-                0x00001fca                __do_global_dtors
+ .fini6         0x00001fd6       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_dtors.o)
+                0x00001fd6                __do_global_dtors
  *(.fini6)
  *(.fini5)
  *(.fini5)
@@ -709,11 +709,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00001fe8        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
+ .fini0         0x00001ff4        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
  *(.fini0)
-                0x00001fec                _etext = .
+                0x00001ff8                _etext = .
 
-.data           0x00800200        0x6 load address 0x00001fec
+.data           0x00800200        0x6 load address 0x00001ff8
                 0x00800200                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800200        0x6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(malloc.o)
@@ -753,8 +753,8 @@ END GROUP
                 0x0080052b                __brkval
                 0x0080052d                __flp
                 0x0080052f                PROVIDE (__bss_end, .)
-                0x00001fec                __data_load_start = LOADADDR (.data)
-                0x00001ff2                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00001ff8                __data_load_start = LOADADDR (.data)
+                0x00001ffe                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x0080052f        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
