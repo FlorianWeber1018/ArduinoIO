@@ -88,7 +88,7 @@ void testflush(uint8_t testChar){
 	}
 }
 void init_io(){
-	io_config init_config=ninvertOutput;
+	io_config init_config=invertOutput;
 	//__________________________________________________________________________________
 	//pins noch anzupassen
 

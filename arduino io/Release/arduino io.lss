@@ -2233,7 +2233,7 @@ Disassembly of section .text:
     13be:	90 e0       	ldi	r25, 0x00	; 0
     13c0:	ff d2       	rcall	.+1534   	; 0x19c0 <_Znwj>
     13c2:	6c 01       	movw	r12, r24
-    13c4:	82 e0       	ldi	r24, 0x02	; 2
+    13c4:	83 e0       	ldi	r24, 0x03	; 3
     13c6:	e8 2e       	mov	r14, r24
     13c8:	01 e0       	ldi	r16, 0x01	; 1
     13ca:	26 e2       	ldi	r18, 0x26	; 38
