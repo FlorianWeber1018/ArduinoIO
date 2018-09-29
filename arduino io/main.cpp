@@ -10,6 +10,7 @@
 #include "cmdParser.h"
 #include "io.h"
 #include "cmdHandler.h"
+#include <avr/wdt.h>
 #include <util/delay.h>
 
 extern volatile uint8_t  InBufferUart0[256];
@@ -23,12 +24,18 @@ io_pin* io[40];
 
 int main(void)
 {
+	MCUSR = 0;
+	wdt_disable();
+	
 DDRB |= 0x80;//LED
 	init_io();
 	init_pwmTimer();
 	init_UART0();
 	init_UART1();
-	
+	uint8_t startcmd[2];
+	startcmd[0] = cmdresetMCU;
+	startcmd[1] = eot;
+	serial_out0(startcmd, 2);
 
 	test();
 
@@ -134,7 +141,7 @@ void init_io(){
 }
 void init_pwmTimer(){
 	
-	OCR3A	=	624;		//-->50Hz
+	OCR3A	=	100;		//624 = alter wert-->50Hz
 	TIMSK3	=	1<<OCIE3A;	//Timer/Countern3, Output Compare A Match Interrupt Enable
 	TCCR3B	=	(1<<CS32) | (1<<WGM32);	//prescaler:256 ; CTC mode
 }

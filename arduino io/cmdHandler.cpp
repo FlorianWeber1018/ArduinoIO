@@ -9,6 +9,12 @@
  #include "uart.h"
  #include "cmdParser.h"
  #include "io.h"
+ #include <avr/wdt.h>
+ void cmdHandler_resetMCU()
+ {
+	wdt_enable(WDTO_15MS);
+ }
+ 
  void cmdHandler_freeMem()
  {
 	 uint8_t returnStr[6];

@@ -25,6 +25,7 @@ void cmdHandler_set_value_io(uint8_t pin, uint8_t value);
 void cmdHandler_set_config_io(uint8_t pin, uint8_t config);
 void cmdHandler_set_config_adc(uint8_t pin, uint8_t config);
 
+void cmdHandler_resetMCU();
 void cmdHandler_freeMem();
 /*
 bool cmdHandler__io();

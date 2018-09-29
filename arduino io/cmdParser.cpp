@@ -27,7 +27,7 @@ void cmdParser::parseOne() volatile
 {
 	uint8_t cmdByte = InBufferUart0[readCursor];	//readCursor starts with cmd Byte
 	readCursor++;
-	if( cmdByte < setVA0 || cmdByte > cmdfreeRam){		//really cmd byte????
+	if( cmdByte < setVA0){		//really cmd byte????
 		//serial_out1('e');		
 	}else{
 		uint8_t parsedNumber = parseUint8Number();
@@ -70,6 +70,9 @@ void cmdParser::parseOne() volatile
 					}else{
 						if(cmdByte == cmdfreeRam){
 							cmdHandler_freeMem();
+						}
+						if(cmdByte == cmdresetMCU){
+							cmdHandler_resetMCU();
 						}
 					}	
 				}

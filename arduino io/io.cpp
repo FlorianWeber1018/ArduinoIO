@@ -93,39 +93,42 @@
  }
  void io_pin::setconfig(uint8_t config) volatile
  {
-	this->config=(io_config)config;
-
-	switch(config){
-		case ninvertInput:{
-			*DDR &= ~(1<<PIN);
-			*PORT_OUT |= 1<<PIN;
-		}break;
-		case invertInput:{
-			*DDR &= ~(1<<PIN);
-			*PORT_OUT |= 1<<PIN;
-		}break;
-		case ninvertOutput:{
-			*DDR |= 1<<PIN;
-			*PORT_OUT &= ~(1<<PIN);
-		}break;
-		case invertOutput:{
-			*DDR |= 1<<PIN;
-			*PORT_OUT |= 1<<PIN;
-		}break;
-		case ninvertPwmOutput:{
-			cnt=0;
-			DutyCycle=0;
-			*DDR |= 1<<PIN;
-			*PORT_OUT &= ~(1<<PIN);
-			
-		}break;
-		case invertPwmOutput:{
-			cnt=0;
-			DutyCycle=0;
-			*DDR |= 1<<PIN;
-			*PORT_OUT |= 1<<PIN;
+	if(this->config != static_cast<io_config>(config))
+	{
+		switch(config){
+			case ninvertInput:{
+				*DDR &= ~(1<<PIN);
+				*PORT_OUT |= 1<<PIN;
+			}break;
+			case invertInput:{
+				*DDR &= ~(1<<PIN);
+				*PORT_OUT |= 1<<PIN;
+			}break;
+			case ninvertOutput:{
+				*DDR |= 1<<PIN;
+				*PORT_OUT &= ~(1<<PIN);
+			}break;
+			case invertOutput:{
+				*DDR |= 1<<PIN;
+				*PORT_OUT |= 1<<PIN;
+			}break;
+			case ninvertPwmOutput:{
+				cnt=0;
+				DutyCycle=0;
+				*DDR |= 1<<PIN;
+				*PORT_OUT &= ~(1<<PIN);
+			}break;
+			case invertPwmOutput:{
+				cnt=0;
+				DutyCycle=0;
+				*DDR |= 1<<PIN;
+				*PORT_OUT |= 1<<PIN;
+			}
 		}
+		this->config=(io_config)config;
 	}
+
+	
  }
  uint8_t io_pin::getconfig() volatile
  {

@@ -47,4 +47,6 @@
 	#define cmdDebug0	(cmdfreeRam+1)
 	#define cmdDebug1	(cmdDebug0+1)
 	#define cmdDebug2	(cmdDebug1+1)
+	
+	#define cmdresetMCU (cmdDebug2+1)
 #endif /* PROTKOLDEF_H_ */
