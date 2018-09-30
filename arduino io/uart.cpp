@@ -17,6 +17,7 @@ extern volatile cmdParser myParser;
 
  void init_UART0(){
 
+InBufferUart0pointer=0;
 	 uint16_t baud = F_CPU / (BAUD * 16L) -1;
 	 UBRR0H = (uint8_t) (baud >> 8);
 	 UBRR0L = (uint8_t) baud;

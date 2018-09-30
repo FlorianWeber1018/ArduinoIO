@@ -5,16 +5,50 @@
  *  Author: Flo
  */
  #include "io.h"
- io_pin::io_pin(volatile uint8_t* DDR, volatile uint8_t* PORT_OUT, volatile uint8_t* PORT_IN, uint8_t PIN, io_config config){
+ io_pin::io_pin(volatile uint8_t* DDR, volatile uint8_t* PORT_OUT, volatile uint8_t* PORT_IN, uint8_t PIN){
 	 this->DDR=DDR;
 	 this->PORT_OUT=PORT_OUT;
 	 this->PORT_IN=PORT_IN;
 	 this->PIN=PIN;
-	 setconfig(config);
+	 init_pinConfig(invertOutput);
 	 this->DutyCycle = 0;
 	 this->cnt = 0;
+	 
  }
-
+void io_pin::init_pinConfig(io_config _config) volatile
+{
+		switch(_config){
+			case ninvertInput:{
+				*DDR &= ~(1<<PIN);
+				*PORT_OUT |= 1<<PIN;
+			}break;
+			case invertInput:{
+				*DDR &= ~(1<<PIN);
+				*PORT_OUT |= 1<<PIN;
+			}break;
+			case ninvertOutput:{
+				*DDR |= 1<<PIN;
+				*PORT_OUT &= ~(1<<PIN);
+			}break;
+			case invertOutput:{
+				*DDR |= 1<<PIN;
+				*PORT_OUT |= 1<<PIN;
+			}break;
+			case ninvertPwmOutput:{
+				cnt=0;
+				DutyCycle=0;
+				*DDR |= 1<<PIN;
+				*PORT_OUT &= ~(1<<PIN);
+			}break;
+			case invertPwmOutput:{
+				cnt=0;
+				DutyCycle=0;
+				*DDR |= 1<<PIN;
+				*PORT_OUT |= 1<<PIN;
+			}
+		}
+	this->config=_config;
+}
 
  io_pin::~io_pin(){
 

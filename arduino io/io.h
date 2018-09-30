@@ -25,14 +25,16 @@ enum io_config{
 class io_pin{
 
 public:
-	io_pin(volatile uint8_t* DDR, volatile uint8_t* PORT_OUT, volatile uint8_t* PORT_IN, uint8_t PIN, io_config config);
+	io_pin(volatile uint8_t* DDR, volatile uint8_t* PORT_OUT, volatile uint8_t* PORT_IN, uint8_t PIN);
 	~io_pin();
 	uint8_t get() volatile;
 	void set(uint8_t value) volatile;
 	void setconfig(uint8_t) volatile;
 	uint8_t getconfig() volatile;
 	void trigger() volatile;
+	
 private:
+	void init_pinConfig(io_config _config) volatile;
 	volatile io_config config;
 	volatile uint8_t* PORT_IN;
 	volatile uint8_t* PORT_OUT;

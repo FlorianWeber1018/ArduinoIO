@@ -64,7 +64,7 @@ Discarded input sections
  .data          0x00000000        0x0 cmdParser.o
  .bss           0x00000000        0x0 cmdParser.o
  .text._ZNV9cmdParser8parseOneEv
-                0x00000000       0xc8 cmdParser.o
+                0x00000000       0xd2 cmdParser.o
  .text._ZNV9cmdParser14get_parser_cntEv
                 0x00000000        0x6 cmdParser.o
  .text._ZNV9cmdParser16parseUint8NumberEv
@@ -95,6 +95,8 @@ Discarded input sections
  .text          0x00000000        0x0 io.o
  .data          0x00000000        0x0 io.o
  .bss           0x00000000        0x0 io.o
+ .text._ZNV6io_pin14init_pinConfigE9io_config
+                0x00000000       0xc2 io.o
  .text._ZN6io_pinD2Ev
                 0x00000000        0x2 io.o
  .text          0x00000000        0x0 list__array_uint8_t.o
@@ -431,7 +433,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x1f94
+.text           0x00000000     0x1f60
  *(.vectors)
  .vectors       0x00000000       0xe4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega2560/avr6/crtatmega2560.o
                 0x00000000                __vector_default
@@ -497,230 +499,233 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x00000812        0x8 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega2560/avr6/crtatmega2560.o
+ .init9         0x00000812        0x6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega2560/avr6/crtatmega2560.o
  *(.init9)
  *(.text)
- .text          0x0000081a        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega2560/avr6/crtatmega2560.o
-                0x0000081a                __vector_38
-                0x0000081a                __vector_22
-                0x0000081a                __vector_28
-                0x0000081a                __vector_1
-                0x0000081a                __vector_34
-                0x0000081a                __vector_24
-                0x0000081a                __vector_12
-                0x0000081a                __vector_55
-                0x0000081a                __vector_46
-                0x0000081a                __bad_interrupt
-                0x0000081a                __vector_6
-                0x0000081a                __vector_31
-                0x0000081a                __vector_35
-                0x0000081a                __vector_39
-                0x0000081a                __vector_3
-                0x0000081a                __vector_23
-                0x0000081a                __vector_30
-                0x0000081a                __vector_45
-                0x0000081a                __vector_11
-                0x0000081a                __vector_54
-                0x0000081a                __vector_13
-                0x0000081a                __vector_17
-                0x0000081a                __vector_19
-                0x0000081a                __vector_56
-                0x0000081a                __vector_7
-                0x0000081a                __vector_49
-                0x0000081a                __vector_41
-                0x0000081a                __vector_43
-                0x0000081a                __vector_27
-                0x0000081a                __vector_5
-                0x0000081a                __vector_33
-                0x0000081a                __vector_47
-                0x0000081a                __vector_52
-                0x0000081a                __vector_37
-                0x0000081a                __vector_4
-                0x0000081a                __vector_44
-                0x0000081a                __vector_51
-                0x0000081a                __vector_9
-                0x0000081a                __vector_2
-                0x0000081a                __vector_21
-                0x0000081a                __vector_15
-                0x0000081a                __vector_40
-                0x0000081a                __vector_8
-                0x0000081a                __vector_26
-                0x0000081a                __vector_48
-                0x0000081a                __vector_14
-                0x0000081a                __vector_53
-                0x0000081a                __vector_10
-                0x0000081a                __vector_50
-                0x0000081a                __vector_16
-                0x0000081a                __vector_20
-                0x0000081a                __vector_42
-                0x0000081c                . = ALIGN (0x2)
+ .text          0x00000818        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega2560/avr6/crtatmega2560.o
+                0x00000818                __vector_38
+                0x00000818                __vector_22
+                0x00000818                __vector_28
+                0x00000818                __vector_1
+                0x00000818                __vector_34
+                0x00000818                __vector_24
+                0x00000818                __vector_12
+                0x00000818                __vector_55
+                0x00000818                __vector_46
+                0x00000818                __bad_interrupt
+                0x00000818                __vector_6
+                0x00000818                __vector_31
+                0x00000818                __vector_35
+                0x00000818                __vector_39
+                0x00000818                __vector_3
+                0x00000818                __vector_23
+                0x00000818                __vector_30
+                0x00000818                __vector_45
+                0x00000818                __vector_11
+                0x00000818                __vector_54
+                0x00000818                __vector_13
+                0x00000818                __vector_17
+                0x00000818                __vector_19
+                0x00000818                __vector_56
+                0x00000818                __vector_7
+                0x00000818                __vector_49
+                0x00000818                __vector_41
+                0x00000818                __vector_43
+                0x00000818                __vector_27
+                0x00000818                __vector_5
+                0x00000818                __vector_33
+                0x00000818                __vector_47
+                0x00000818                __vector_52
+                0x00000818                __vector_37
+                0x00000818                __vector_4
+                0x00000818                __vector_44
+                0x00000818                __vector_51
+                0x00000818                __vector_9
+                0x00000818                __vector_2
+                0x00000818                __vector_21
+                0x00000818                __vector_15
+                0x00000818                __vector_40
+                0x00000818                __vector_8
+                0x00000818                __vector_26
+                0x00000818                __vector_48
+                0x00000818                __vector_14
+                0x00000818                __vector_53
+                0x00000818                __vector_10
+                0x00000818                __vector_50
+                0x00000818                __vector_16
+                0x00000818                __vector_20
+                0x00000818                __vector_42
+                0x0000081a                . = ALIGN (0x2)
  *(.text.*)
  .text._ZN22AnalogDigitalConverterC2Ev
-                0x0000081c      0x132 ADC.o
-                0x0000081c                _ZN22AnalogDigitalConverterC1Ev
-                0x0000081c                _ZN22AnalogDigitalConverterC2Ev
+                0x0000081a      0x132 ADC.o
+                0x0000081a                _ZN22AnalogDigitalConverterC1Ev
+                0x0000081a                _ZN22AnalogDigitalConverterC2Ev
  .text._ZNV22AnalogDigitalConverter6sampleEv
-                0x0000094e      0x2e4 ADC.o
-                0x0000094e                _ZNV22AnalogDigitalConverter6sampleEv
+                0x0000094c      0x2e4 ADC.o
+                0x0000094c                _ZNV22AnalogDigitalConverter6sampleEv
  .text._ZNV22AnalogDigitalConverter9getoutputEh
-                0x00000c32       0x20 ADC.o
-                0x00000c32                _ZNV22AnalogDigitalConverter9getoutputEh
+                0x00000c30       0x20 ADC.o
+                0x00000c30                _ZNV22AnalogDigitalConverter9getoutputEh
  .text._ZNV22AnalogDigitalConverter9getconfigEh
-                0x00000c52       0x2c ADC.o
-                0x00000c52                _ZNV22AnalogDigitalConverter9getconfigEh
+                0x00000c50       0x2c ADC.o
+                0x00000c50                _ZNV22AnalogDigitalConverter9getconfigEh
  .text._ZNV22AnalogDigitalConverter9setconfigEhh
-                0x00000c7e       0x50 ADC.o
-                0x00000c7e                _ZNV22AnalogDigitalConverter9setconfigEhh
+                0x00000c7c       0x50 ADC.o
+                0x00000c7c                _ZNV22AnalogDigitalConverter9setconfigEhh
  .text.__vector_18
-                0x00000cce       0x16 ADC.o
-                0x00000cce                __vector_18
+                0x00000ccc       0x16 ADC.o
+                0x00000ccc                __vector_18
+ .text._Z19cmdHandler_resetMCUv
+                0x00000ce2       0x16 cmdHandler.o
+                0x00000ce2                _Z19cmdHandler_resetMCUv
  .text._Z18cmdHandler_freeMemv
-                0x00000ce4       0x38 cmdHandler.o
-                0x00000ce4                _Z18cmdHandler_freeMemv
+                0x00000cf8       0x38 cmdHandler.o
+                0x00000cf8                _Z18cmdHandler_freeMemv
  .text._Z23cmdHandler_get_value_ioh
-                0x00000d1c       0x4a cmdHandler.o
-                0x00000d1c                _Z23cmdHandler_get_value_ioh
+                0x00000d30       0x4a cmdHandler.o
+                0x00000d30                _Z23cmdHandler_get_value_ioh
  .text._Z24cmdHandler_get_value_adch
-                0x00000d66       0x44 cmdHandler.o
-                0x00000d66                _Z24cmdHandler_get_value_adch
+                0x00000d7a       0x44 cmdHandler.o
+                0x00000d7a                _Z24cmdHandler_get_value_adch
  .text._Z24cmdHandler_get_config_ioh
-                0x00000daa       0x4a cmdHandler.o
-                0x00000daa                _Z24cmdHandler_get_config_ioh
+                0x00000dbe       0x4a cmdHandler.o
+                0x00000dbe                _Z24cmdHandler_get_config_ioh
  .text._Z25cmdHandler_get_config_adch
-                0x00000df4       0x40 cmdHandler.o
-                0x00000df4                _Z25cmdHandler_get_config_adch
+                0x00000e08       0x40 cmdHandler.o
+                0x00000e08                _Z25cmdHandler_get_config_adch
  .text._Z23cmdHandler_set_value_iohh
-                0x00000e34       0x68 cmdHandler.o
-                0x00000e34                _Z23cmdHandler_set_value_iohh
+                0x00000e48       0x68 cmdHandler.o
+                0x00000e48                _Z23cmdHandler_set_value_iohh
  .text._Z24cmdHandler_set_config_iohh
-                0x00000e9c       0x68 cmdHandler.o
-                0x00000e9c                _Z24cmdHandler_set_config_iohh
+                0x00000eb0       0x68 cmdHandler.o
+                0x00000eb0                _Z24cmdHandler_set_config_iohh
  .text._Z25cmdHandler_set_config_adchh
-                0x00000f04       0x50 cmdHandler.o
-                0x00000f04                _Z25cmdHandler_set_config_adchh
+                0x00000f18       0x50 cmdHandler.o
+                0x00000f18                _Z25cmdHandler_set_config_adchh
  .text._ZN9cmdParserC2Ev
-                0x00000f54        0x8 cmdParser.o
-                0x00000f54                _ZN9cmdParserC1Ev
-                0x00000f54                _ZN9cmdParserC2Ev
+                0x00000f68        0x8 cmdParser.o
+                0x00000f68                _ZN9cmdParserC1Ev
+                0x00000f68                _ZN9cmdParserC2Ev
  .text._ZNV9cmdParser11checkparserEv
-                0x00000f5c       0xc8 cmdParser.o
-                0x00000f5c                _ZNV9cmdParser11checkparserEv
+                0x00000f70       0xd0 cmdParser.o
+                0x00000f70                _ZNV9cmdParser11checkparserEv
  .text._ZNV9cmdParser14inc_parser_cntEv
-                0x00001024        0xa cmdParser.o
-                0x00001024                _ZNV9cmdParser14inc_parser_cntEv
+                0x00001040        0xa cmdParser.o
+                0x00001040                _ZNV9cmdParser14inc_parser_cntEv
  .text._Z10plotNumberhPh
-                0x0000102e       0x10 cmdParser.o
-                0x0000102e                _Z10plotNumberhPh
+                0x0000104a       0x10 cmdParser.o
+                0x0000104a                _Z10plotNumberhPh
  .text._Z10plotNumberiPh
-                0x0000103e       0x2e cmdParser.o
-                0x0000103e                _Z10plotNumberiPh
- .text._ZN6io_pinC2EPVhS1_S1_h9io_config
-                0x0000106c       0xd8 io.o
-                0x0000106c                _ZN6io_pinC1EPVhS1_S1_h9io_config
-                0x0000106c                _ZN6io_pinC2EPVhS1_S1_h9io_config
+                0x0000105a       0x2e cmdParser.o
+                0x0000105a                _Z10plotNumberiPh
+ .text._ZN6io_pinC2EPVhS1_S1_h
+                0x00001088       0x50 io.o
+                0x00001088                _ZN6io_pinC1EPVhS1_S1_h
+                0x00001088                _ZN6io_pinC2EPVhS1_S1_h
  .text._ZNV6io_pin3getEv
-                0x00001144       0x6c io.o
-                0x00001144                _ZNV6io_pin3getEv
+                0x000010d8       0x6c io.o
+                0x000010d8                _ZNV6io_pin3getEv
  .text._ZNV6io_pin3setEh
-                0x000011b0       0x66 io.o
-                0x000011b0                _ZNV6io_pin3setEh
+                0x00001144       0x66 io.o
+                0x00001144                _ZNV6io_pin3setEh
  .text._ZNV6io_pin9setconfigEh
-                0x00001216       0xbe io.o
-                0x00001216                _ZNV6io_pin9setconfigEh
+                0x000011aa       0xc8 io.o
+                0x000011aa                _ZNV6io_pin9setconfigEh
  .text._ZNV6io_pin9getconfigEv
-                0x000012d4        0x6 io.o
-                0x000012d4                _ZNV6io_pin9getconfigEv
+                0x00001272        0x6 io.o
+                0x00001272                _ZNV6io_pin9getconfigEv
  .text._ZNV6io_pin7triggerEv
-                0x000012da       0x84 io.o
-                0x000012da                _ZNV6io_pin7triggerEv
+                0x00001278       0x84 io.o
+                0x00001278                _ZNV6io_pin7triggerEv
  .text._ZN4lockC2Ev
-                0x0000135e        0x6 lock.o
-                0x0000135e                _ZN4lockC1Ev
-                0x0000135e                _ZN4lockC2Ev
+                0x000012fc        0x6 lock.o
+                0x000012fc                _ZN4lockC1Ev
+                0x000012fc                _ZN4lockC2Ev
  .text._ZNV4lock7tryLockEv
-                0x00001364       0x16 lock.o
-                0x00001364                _ZNV4lock7tryLockEv
+                0x00001302       0x16 lock.o
+                0x00001302                _ZNV4lock7tryLockEv
  .text._ZNV4lock6unlockEv
-                0x0000137a        0x6 lock.o
-                0x0000137a                _ZNV4lock6unlockEv
+                0x00001318        0x6 lock.o
+                0x00001318                _ZNV4lock6unlockEv
  .text._Z7init_iov
-                0x00001380      0x49e main.o
-                0x00001380                _Z7init_iov
+                0x0000131e      0x494 main.o
+                0x0000131e                _Z7init_iov
  .text.startup.main
-                0x0000181e       0x2a main.o
-                0x0000181e                main
+                0x000017b2       0x5e main.o
+                0x000017b2                main
  .text.__vector_32
-                0x00001848       0x66 main.o
-                0x00001848                __vector_32
+                0x00001810       0x66 main.o
+                0x00001810                __vector_32
  .text.__vector_29
-                0x000018ae       0x52 main.o
-                0x000018ae                __vector_29
+                0x00001876       0x52 main.o
+                0x00001876                __vector_29
  .text._Z7freeRamv
-                0x00001900       0x32 main.o
-                0x00001900                _Z7freeRamv
+                0x000018c8       0x32 main.o
+                0x000018c8                _Z7freeRamv
  .text.startup._GLOBAL__sub_I_myADC
-                0x00001932        0xe main.o
+                0x000018fa        0xe main.o
  .text.exit._GLOBAL__sub_D_myADC
-                0x00001940       0x1c main.o
- .text._Znwj    0x0000195c        0x2 mem.o
-                0x0000195c                _Znwj
+                0x00001908       0x1c main.o
+ .text._Znwj    0x00001924        0x2 mem.o
+                0x00001924                _Znwj
  .text._ZNV10iirlowpass6sampleEi
-                0x0000195e      0x21a tiefpass.o
-                0x0000195e                _ZNV10iirlowpass6sampleEi
+                0x00001926      0x21a tiefpass.o
+                0x00001926                _ZNV10iirlowpass6sampleEi
  .text._ZN10iirlowpassC2Ev
-                0x00001b78       0x5a tiefpass.o
-                0x00001b78                _ZN10iirlowpassC2Ev
-                0x00001b78                _ZN10iirlowpassC1Ev
+                0x00001b40       0x5a tiefpass.o
+                0x00001b40                _ZN10iirlowpassC2Ev
+                0x00001b40                _ZN10iirlowpassC1Ev
  .text._ZN10iirlowpassD2Ev
-                0x00001bd2        0x8 tiefpass.o
-                0x00001bd2                _ZN10iirlowpassD1Ev
-                0x00001bd2                _ZN10iirlowpassD2Ev
+                0x00001b9a        0x8 tiefpass.o
+                0x00001b9a                _ZN10iirlowpassD1Ev
+                0x00001b9a                _ZN10iirlowpassD2Ev
  .text._Z10init_UART0v
-                0x00001bda       0x18 uart.o
-                0x00001bda                _Z10init_UART0v
+                0x00001ba2       0x1c uart.o
+                0x00001ba2                _Z10init_UART0v
  .text._Z10init_UART1v
-                0x00001bf2       0x18 uart.o
-                0x00001bf2                _Z10init_UART1v
+                0x00001bbe       0x18 uart.o
+                0x00001bbe                _Z10init_UART1v
  .text.__vector_25
-                0x00001c0a       0x72 uart.o
-                0x00001c0a                __vector_25
+                0x00001bd6       0x72 uart.o
+                0x00001bd6                __vector_25
  .text.__vector_36
-                0x00001c7c       0x1c uart.o
-                0x00001c7c                __vector_36
+                0x00001c48       0x1c uart.o
+                0x00001c48                __vector_36
  .text._Z11serial_out0Phh
-                0x00001c98       0x4c uart.o
-                0x00001c98                _Z11serial_out0Phh
+                0x00001c64       0x4c uart.o
+                0x00001c64                _Z11serial_out0Phh
  .text.startup._GLOBAL__sub_I_InBufferUart0
-                0x00001ce4        0x6 uart.o
- .text.libgcc   0x00001cea       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_tablejump2.o)
-                0x00001cea                __tablejump2__
+                0x00001cb0        0x6 uart.o
+ .text.libgcc   0x00001cb6       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_tablejump2.o)
+                0x00001cb6                __tablejump2__
  .text.libgcc.mul
-                0x00001cfa        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_mulhisi3.o)
-                0x00001cfa                __mulhisi3
+                0x00001cc6        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_mulhisi3.o)
+                0x00001cc6                __mulhisi3
  .text.libgcc.mul
-                0x00001d06       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_umulhisi3.o)
-                0x00001d06                __umulhisi3
+                0x00001cd2       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_umulhisi3.o)
+                0x00001cd2                __umulhisi3
  .text.libgcc.mul
-                0x00001d24        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_usmulhisi3.o)
-                0x00001d24                __usmulhisi3
-                0x00001d26                __usmulhisi3_tail
+                0x00001cf0        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_usmulhisi3.o)
+                0x00001cf0                __usmulhisi3
+                0x00001cf2                __usmulhisi3_tail
  .text.avr-libc
-                0x00001d30      0x242 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(malloc.o)
-                0x00001d30                malloc
-                0x00001e60                free
-                0x00001f72                . = ALIGN (0x2)
+                0x00001cfc      0x242 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(malloc.o)
+                0x00001cfc                malloc
+                0x00001e2c                free
+                0x00001f3e                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00001f72        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
-                0x00001f72                _exit
-                0x00001f72                exit
+ .fini9         0x00001f3e        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
+                0x00001f3e                _exit
+                0x00001f3e                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
  *(.fini7)
  *(.fini7)
  *(.fini6)
- .fini6         0x00001f72       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_dtors.o)
-                0x00001f72                __do_global_dtors
+ .fini6         0x00001f3e       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_dtors.o)
+                0x00001f3e                __do_global_dtors
  *(.fini6)
  *(.fini5)
  *(.fini5)
@@ -733,11 +738,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00001f90        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
+ .fini0         0x00001f5c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
  *(.fini0)
-                0x00001f94                _etext = .
+                0x00001f60                _etext = .
 
-.data           0x00800200        0x6 load address 0x00001f94
+.data           0x00800200        0x6 load address 0x00001f60
                 0x00800200                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800200        0x6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(malloc.o)
@@ -777,8 +782,8 @@ END GROUP
                 0x0080052b                __brkval
                 0x0080052d                __flp
                 0x0080052f                PROVIDE (__bss_end, .)
-                0x00001f94                __data_load_start = LOADADDR (.data)
-                0x00001f9a                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00001f60                __data_load_start = LOADADDR (.data)
+                0x00001f66                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x0080052f        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -858,114 +863,114 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x2c0
+.debug_aranges  0x00000000      0x2d0
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x58 ADC.o
  .debug_aranges
-                0x00000058       0x58 cmdHandler.o
+                0x00000058       0x60 cmdHandler.o
  .debug_aranges
-                0x000000b0       0x58 cmdParser.o
+                0x000000b8       0x58 cmdParser.o
  .debug_aranges
-                0x00000108       0x50 io.o
+                0x00000110       0x58 io.o
  .debug_aranges
-                0x00000158       0x38 lock.o
+                0x00000168       0x38 lock.o
  .debug_aranges
-                0x00000190       0x68 main.o
+                0x000001a0       0x68 main.o
  .debug_aranges
-                0x000001f8       0x40 mem.o
+                0x00000208       0x40 mem.o
  .debug_aranges
-                0x00000238       0x30 tiefpass.o
+                0x00000248       0x30 tiefpass.o
  .debug_aranges
-                0x00000268       0x58 uart.o
+                0x00000278       0x58 uart.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x6076
+.debug_info     0x00000000     0x610e
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0xbbc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega2560/avr6/crtatmega2560.o
  .debug_info    0x00000bbc      0x801 ADC.o
- .debug_info    0x000013bd     0x1225 cmdHandler.o
- .debug_info    0x000025e2      0xcd7 cmdParser.o
- .debug_info    0x000032b9      0x45e io.o
- .debug_info    0x00003717      0x1a3 lock.o
- .debug_info    0x000038ba     0x1efa main.o
- .debug_info    0x000057b4      0x187 mem.o
- .debug_info    0x0000593b      0x295 tiefpass.o
- .debug_info    0x00005bd0      0x4a6 uart.o
+ .debug_info    0x000013bd     0x12a3 cmdHandler.o
+ .debug_info    0x00002660      0xcfa cmdParser.o
+ .debug_info    0x0000335a      0x49d io.o
+ .debug_info    0x000037f7      0x1a3 lock.o
+ .debug_info    0x0000399a     0x1eb2 main.o
+ .debug_info    0x0000584c      0x187 mem.o
+ .debug_info    0x000059d3      0x295 tiefpass.o
+ .debug_info    0x00005c68      0x4a6 uart.o
 
-.debug_abbrev   0x00000000     0x1f19
+.debug_abbrev   0x00000000     0x1fde
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0xb1a C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega2560/avr6/crtatmega2560.o
  .debug_abbrev  0x00000b1a      0x2c4 ADC.o
- .debug_abbrev  0x00000dde      0x29b cmdHandler.o
- .debug_abbrev  0x00001079      0x27f cmdParser.o
- .debug_abbrev  0x000012f8      0x1ea io.o
- .debug_abbrev  0x000014e2      0x111 lock.o
- .debug_abbrev  0x000015f3      0x3f1 main.o
- .debug_abbrev  0x000019e4      0x115 mem.o
- .debug_abbrev  0x00001af9      0x1c6 tiefpass.o
- .debug_abbrev  0x00001cbf      0x25a uart.o
+ .debug_abbrev  0x00000dde      0x2f7 cmdHandler.o
+ .debug_abbrev  0x000010d5      0x27f cmdParser.o
+ .debug_abbrev  0x00001354      0x204 io.o
+ .debug_abbrev  0x00001558      0x111 lock.o
+ .debug_abbrev  0x00001669      0x440 main.o
+ .debug_abbrev  0x00001aa9      0x115 mem.o
+ .debug_abbrev  0x00001bbe      0x1c6 tiefpass.o
+ .debug_abbrev  0x00001d84      0x25a uart.o
 
-.debug_line     0x00000000     0x180d
+.debug_line     0x00000000     0x196c
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x1f9 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega2560/avr6/crtatmega2560.o
  .debug_line    0x000001f9      0x4cc ADC.o
- .debug_line    0x000006c5      0x293 cmdHandler.o
- .debug_line    0x00000958      0x333 cmdParser.o
- .debug_line    0x00000c8b      0x2e8 io.o
- .debug_line    0x00000f73       0xa3 lock.o
- .debug_line    0x00001016      0x334 main.o
- .debug_line    0x0000134a      0x162 mem.o
- .debug_line    0x000014ac      0x14d tiefpass.o
- .debug_line    0x000015f9      0x214 uart.o
+ .debug_line    0x000006c5      0x310 cmdHandler.o
+ .debug_line    0x000009d5      0x357 cmdParser.o
+ .debug_line    0x00000d2c      0x319 io.o
+ .debug_line    0x00001045       0xa3 lock.o
+ .debug_line    0x000010e8      0x3bb main.o
+ .debug_line    0x000014a3      0x162 mem.o
+ .debug_line    0x00001605      0x14d tiefpass.o
+ .debug_line    0x00001752      0x21a uart.o
 
-.debug_frame    0x00000000      0x714
+.debug_frame    0x00000000      0x754
  *(.debug_frame)
  .debug_frame   0x00000000       0xe8 ADC.o
- .debug_frame   0x000000e8      0x13c cmdHandler.o
- .debug_frame   0x00000224       0xac cmdParser.o
- .debug_frame   0x000002d0       0x90 io.o
- .debug_frame   0x00000360       0x54 lock.o
- .debug_frame   0x000003b4      0x188 main.o
- .debug_frame   0x0000053c       0x64 mem.o
- .debug_frame   0x000005a0       0x70 tiefpass.o
- .debug_frame   0x00000610      0x104 uart.o
+ .debug_frame   0x000000e8      0x14c cmdHandler.o
+ .debug_frame   0x00000234       0xac cmdParser.o
+ .debug_frame   0x000002e0       0xb4 io.o
+ .debug_frame   0x00000394       0x54 lock.o
+ .debug_frame   0x000003e8      0x194 main.o
+ .debug_frame   0x0000057c       0x64 mem.o
+ .debug_frame   0x000005e0       0x70 tiefpass.o
+ .debug_frame   0x00000650      0x104 uart.o
 
-.debug_str      0x00000000     0x1095
+.debug_str      0x00000000     0x1101
  *(.debug_str)
  .debug_str     0x00000000      0x3e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega2560/avr6/crtatmega2560.o
  .debug_str     0x000003e6      0x457 ADC.o
                                 0x4dd (size before relaxing)
- .debug_str     0x0000083d      0x321 cmdHandler.o
-                                0x7d0 (size before relaxing)
- .debug_str     0x00000b5e      0x159 cmdParser.o
-                                0x542 (size before relaxing)
- .debug_str     0x00000cb7       0x47 io.o
-                                0x327 (size before relaxing)
- .debug_str     0x00000cfe       0x81 lock.o
+ .debug_str     0x0000083d      0x385 cmdHandler.o
+                                0x83d (size before relaxing)
+ .debug_str     0x00000bc2      0x159 cmdParser.o
+                                0x56f (size before relaxing)
+ .debug_str     0x00000d1b       0x3d io.o
+                                0x351 (size before relaxing)
+ .debug_str     0x00000d58       0x81 lock.o
                                 0x1af (size before relaxing)
- .debug_str     0x00000d7f      0x1c6 main.o
-                                0x8a5 (size before relaxing)
- .debug_str     0x00000f45       0x79 mem.o
+ .debug_str     0x00000dd9      0x1d8 main.o
+                                0x90b (size before relaxing)
+ .debug_str     0x00000fb1       0x79 mem.o
                                 0x1d4 (size before relaxing)
- .debug_str     0x00000fbe       0x4c tiefpass.o
+ .debug_str     0x0000102a       0x4c tiefpass.o
                                 0x26e (size before relaxing)
- .debug_str     0x0000100a       0x8b uart.o
+ .debug_str     0x00001076       0x8b uart.o
                                 0x480 (size before relaxing)
 
-.debug_loc      0x00000000     0x1f46
+.debug_loc      0x00000000     0x1e77
  *(.debug_loc)
  .debug_loc     0x00000000      0x7f3 ADC.o
- .debug_loc     0x000007f3      0x4e4 cmdHandler.o
- .debug_loc     0x00000cd7      0x4c1 cmdParser.o
- .debug_loc     0x00001198      0x4b3 io.o
- .debug_loc     0x0000164b       0x50 lock.o
- .debug_loc     0x0000169b      0x2e0 main.o
- .debug_loc     0x0000197b       0x74 mem.o
- .debug_loc     0x000019ef      0x307 tiefpass.o
- .debug_loc     0x00001cf6      0x250 uart.o
+ .debug_loc     0x000007f3      0x4f8 cmdHandler.o
+ .debug_loc     0x00000ceb      0x4d7 cmdParser.o
+ .debug_loc     0x000011c2      0x37f io.o
+ .debug_loc     0x00001541       0x50 lock.o
+ .debug_loc     0x00001591      0x31b main.o
+ .debug_loc     0x000018ac       0x74 mem.o
+ .debug_loc     0x00001920      0x307 tiefpass.o
+ .debug_loc     0x00001c27      0x250 uart.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -985,17 +990,17 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x2d8
+.debug_ranges   0x00000000      0x2d0
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x90 ADC.o
- .debug_ranges  0x00000090       0x48 cmdHandler.o
- .debug_ranges  0x000000d8       0x90 cmdParser.o
- .debug_ranges  0x00000168       0x58 io.o
- .debug_ranges  0x000001c0       0x28 lock.o
- .debug_ranges  0x000001e8       0x58 main.o
- .debug_ranges  0x00000240       0x30 mem.o
- .debug_ranges  0x00000270       0x20 tiefpass.o
- .debug_ranges  0x00000290       0x48 uart.o
+ .debug_ranges  0x00000090       0x50 cmdHandler.o
+ .debug_ranges  0x000000e0       0x90 cmdParser.o
+ .debug_ranges  0x00000170       0x48 io.o
+ .debug_ranges  0x000001b8       0x28 lock.o
+ .debug_ranges  0x000001e0       0x58 main.o
+ .debug_ranges  0x00000238       0x30 mem.o
+ .debug_ranges  0x00000268       0x20 tiefpass.o
+ .debug_ranges  0x00000288       0x48 uart.o
 
 .debug_macro
  *(.debug_macro)
