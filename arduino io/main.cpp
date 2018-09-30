@@ -128,7 +128,7 @@ void init_io(){
 }
 void init_pwmTimer(){
 	
-	OCR3A	=	100;		//624 = alter wert-->50Hz
+	OCR3A	=	624;		//624 = alter wert-->50Hz
 	TIMSK3	=	1<<OCIE3A;	//Timer/Countern3, Output Compare A Match Interrupt Enable
 	TCCR3B	=	(1<<CS32) | (1<<WGM32);	//prescaler:256 ; CTC mode
 }
