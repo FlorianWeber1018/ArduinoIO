@@ -113,14 +113,14 @@ void init_io(){
 	io[31]	=new io_pin(&DDRB, &PORTB, &PINB, 0 );
 	//pins noch anzupassen
 	
-	io[32]	=new io_pin(&DDRH, &PORTH, &PINH, 5 );
-	io[33]	=new io_pin(&DDRH, &PORTH, &PINH, 6 );
-	io[34]	=new io_pin(&DDRE, &PORTE, &PINE, 4 );
-	io[35]	=new io_pin(&DDRE, &PORTE, &PINE, 5 );
-	io[36]	=new io_pin(&DDRG, &PORTG, &PING, 5 );
-	io[37]	=new io_pin(&DDRE, &PORTE, &PINE, 3 );
-	io[38]	=new io_pin(&DDRH, &PORTH, &PINH, 3 );
-	io[39]	=new io_pin(&DDRH, &PORTH, &PINH, 4 );
+	io[32]	=new io_pin(&DDRB, &PORTB, &PINB, 7 );
+	io[33]	=new io_pin(&DDRB, &PORTB, &PINB, 6 );
+	io[34]	=new io_pin(&DDRB, &PORTB, &PINB, 5 );
+	io[35]	=new io_pin(&DDRB, &PORTB, &PINB, 4 );
+	io[36]	=new io_pin(&DDRH, &PORTH, &PINH, 6 );
+	io[37]	=new io_pin(&DDRH, &PORTH, &PINH, 5 );
+	io[38]	=new io_pin(&DDRH, &PORTH, &PINH, 4 );
+	io[39]	=new io_pin(&DDRH, &PORTH, &PINH, 3 );
 	
 	
 
