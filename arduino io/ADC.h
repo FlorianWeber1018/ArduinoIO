@@ -48,7 +48,7 @@ const int16_t _pt2000[] PROGMEM = {
 #include "pt2000.csv"
 };
 const int16_t _pt2000Start  = 600;
-const int16_t _pt2000size = 424;
+const int16_t _pt2000size = 507;
 
 
 const int16_t _pt1000[] PROGMEM = {

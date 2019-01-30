@@ -21,7 +21,7 @@ volatile cmdParser myParser;
 volatile io_pin* io[40];
 
 
-
+#define testPin 32
 int main(void)
 {
 	MCUSR = 0;
@@ -29,9 +29,10 @@ int main(void)
 	
 DDRB |= 0x80;//LED
 	init_io();
+	
 	init_pwmTimer();
-	init_UART0();
-	init_UART1();
+	init_UART0();	//UART is on screw-terminal and usb
+	init_UART1();	//only on screw-terminals
 	uint8_t startcmd[2];
 	startcmd[0] = cmdresetMCU;
 	startcmd[1] = eot;
@@ -43,7 +44,6 @@ DDRB |= 0x80;//LED
 	while(1){
 		myParser.checkparser();
 	}
-	
 }
 void test(){
 	/*
@@ -111,16 +111,16 @@ void init_io(){
 	io[29]	=new io_pin(&DDRL, &PORTL, &PINL, 0 );
 	io[30]	=new io_pin(&DDRB, &PORTB, &PINB, 2 );
 	io[31]	=new io_pin(&DDRB, &PORTB, &PINB, 0 );
-	//pins noch anzupassen
+
 	
-	io[32]	=new io_pin(&DDRB, &PORTB, &PINB, 7 );
-	io[33]	=new io_pin(&DDRB, &PORTB, &PINB, 6 );
-	io[34]	=new io_pin(&DDRB, &PORTB, &PINB, 5 );
-	io[35]	=new io_pin(&DDRB, &PORTB, &PINB, 4 );
-	io[36]	=new io_pin(&DDRH, &PORTH, &PINH, 6 );
-	io[37]	=new io_pin(&DDRH, &PORTH, &PINH, 5 );
-	io[38]	=new io_pin(&DDRH, &PORTH, &PINH, 4 );
-	io[39]	=new io_pin(&DDRH, &PORTH, &PINH, 3 );
+	io[32]	=new io_pin(&DDRH, &PORTH, &PINH, 4 );
+	io[33]	=new io_pin(&DDRH, &PORTH, &PINH, 3 );
+	io[34]	=new io_pin(&DDRE, &PORTE, &PINE, 3 );
+	io[35]	=new io_pin(&DDRE, &PORTE, &PINE, 5 );
+	io[36]	=new io_pin(&DDRJ, &PORTJ, &PINJ, 1 );
+	io[37]	=new io_pin(&DDRJ, &PORTJ, &PINJ, 0 );
+	io[38]	=new io_pin(&DDRH, &PORTH, &PINH, 1 );
+	io[39]	=new io_pin(&DDRH, &PORTH, &PINH, 0 );
 	
 	
 
